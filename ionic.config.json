@@ -1,5 +1,7 @@
 {
   "name": "app-feriapp",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

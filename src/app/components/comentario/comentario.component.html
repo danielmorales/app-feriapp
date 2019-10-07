@@ -1,0 +1,24 @@
+<div class="post">
+
+  <ion-item lines="none">
+
+    <ion-avatar slot="start">
+      <img src="/assets/avatars/av-1.png">
+    </ion-avatar>
+
+    <ion-label>
+      <h3> {{post.cuentum.nombre}} {{post.cuentum.apellido}} </h3>
+      <h5> {{post.cuentum.correo_cuenta}} </h5>
+      <h5> Comentado el {{post.created_at}} </h5>
+    </ion-label>
+
+  </ion-item>
+
+  <ion-item lines="none">
+    <ion-label class="ion-text-wrap">
+      {{post.texto_comentariopuesto}}
+    </ion-label>
+  </ion-item>
+
+
+</div>
