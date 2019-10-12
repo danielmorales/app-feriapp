@@ -17,6 +17,14 @@ export class Tab1Page implements OnInit {
 
   ngOnInit() {
     this.siguientes();
+
+    // para escuchar si es que hay algun nuevo post
+
+    this.postsService.nuevoPost
+      .subscribe(post =>{
+        console.log('estoy en el ngOnInit escuchando', post);
+        this.posts.unshift(post);
+      });
   }
 
   recargar (event) {

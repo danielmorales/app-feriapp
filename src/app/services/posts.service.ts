@@ -1,14 +1,25 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Injectable, EventEmitter } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { RespuestaPosts } from '../interfaces/interfaces';
+import { RespuestaPosts, Comentariopuesto } from '../interfaces/interfaces';
+import { UsuarioService } from './usuario.service';
 
 const Url = environment.url;
 
-/*
-const headers = new HttpHeaders({
-  'X-Api-key': Url,
-  'fk_id_puesto': puesto
+/* ESTO ES PARA METER DATOS EN EL BODY DE LA PETICION HTTP
+const httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }), body: your body data
+};
+
+
+return new Promise(resolve => {
+    this.httpClient.delete(URL, httpOptions)       
+                   .subscribe(res => {     
+                       resolve(res);
+                   }, err => {               
+                       resolve(err);
+                   });
+    });
 });
 */
 
@@ -18,9 +29,14 @@ const headers = new HttpHeaders({
 export class PostsService {
 
   paginaPosts = 0;
+  //Debo entregar el numero del puesto al seleccionarlo de la interfaz
   puesto = 1;
 
-  constructor(private http: HttpClient) { }
+  // EventEmitter para poner el nuevo post de los primeros en el muro de comentarios
+  nuevoPost = new EventEmitter<Comentariopuesto>();
+
+  constructor(private http: HttpClient,
+              private usuarioService: UsuarioService) { }
 
   // funcion que no se utiliza, es para juntar una query con la url inicial
   private ejecutarQuery<T>(query: string) {
@@ -36,4 +52,25 @@ export class PostsService {
     return this.http.get<RespuestaPosts>(`${Url}/api/comentariopuesto?pagina=${this.paginaPosts}&puesto=${this.puesto}`);
   //  return this.ejecutarQuery(`/api/comentariopuesto?pagina=${this.paginaPosts}`);
   }
+
+  crearPost(post){
+    const headers = new HttpHeaders({
+      'x-token': this.usuarioService.token
+    });
+
+    return new Promise(resolve => {
+      
+      this.http.post(`${Url}/api/comentariopuesto`, post, {headers})
+        .subscribe( resp => {
+          console.log('Estoy en la promesa del crear post', resp);
+  
+          //para poner el post de los primeros en el muro
+          this.nuevoPost.emit(resp['post']);
+          resolve(true);
+        })
+
+    });
+
+  }
+
 }
