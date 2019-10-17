@@ -93,7 +93,7 @@ export class UsuarioService {
 
   async validaToken(): Promise<boolean> {
 
-    console.log('Entre a la funcion validaToken');
+    // console.log('Entre a la funcion validaToken');
 
     await this.cargarToken();
 

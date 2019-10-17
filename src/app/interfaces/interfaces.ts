@@ -24,6 +24,31 @@ export interface Cuenta {
     activo?: number;
   }
 
+export interface Ferias {
+    ok: boolean;
+    ferias: Feria[];
+}
+
+export interface Feria {
+    id_feria?: number;
+    geo_feria?: string;
+    nombre_feria?: string;
+    descripcion_feria?: string;
+    created_at?: string;
+    updated_at?: string;
+}
+
+export interface Puestos {
+  puestos: Puesto[];
+}
+
+export interface Puesto {
+  id_puesto: number;
+  nombre_puesto: string;
+  descripcion_puesto: string;
+  fk_id_feria: number;
+}
+
   /*
 export interface ComentarioPuesto {
     id_comentariopuesto: number;

@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Comentariopuesto } from '../../interfaces/interfaces';
 
-
 @Component({
   selector: 'app-comentarios',
   templateUrl: './comentarios.component.html',
@@ -14,7 +13,7 @@ export class ComentariosComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log('Hola, aqui estoy dentro de comentarios component: ', this.posts);
+    // console.log('Aqui estoy en el componente comentarios', this.posts);
   }
 
 }

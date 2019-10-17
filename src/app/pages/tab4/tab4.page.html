@@ -1,9 +1,12 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>tab4</ion-title>
+    <ion-title>Ferias</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+<app-ferias [ferias]="ferias"
+            (clickFeria)="escuchadelHijo( $event )"></app-ferias>
 
 </ion-content>

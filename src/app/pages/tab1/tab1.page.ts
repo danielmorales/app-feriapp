@@ -37,7 +37,7 @@ export class Tab1Page implements OnInit {
       
     this.postsService.getPosts(pull)
     .subscribe( resp => {
-      console.log('Hola, aqui va lo que devuelve la API', resp);
+      // console.log('Hola, aqui va lo que devuelve la API', resp);
       this.posts.push(...resp.comentariopuesto);
       console.log('Guardo en el arreglo posts lo que devuelve la api', this.posts);
 

@@ -18,7 +18,8 @@ const routes: Routes = [
     redirectTo: 'main/tabs/tab1'
   },
   { path: 'ferias', loadChildren: './pages/ferias/ferias.module#FeriasPageModule' },
-  { path: 'tab4', loadChildren: './pages/tab4/tab4.module#Tab4PageModule' }
+  { path: 'tab4', loadChildren: './pages/tab4/tab4.module#Tab4PageModule' },
+  { path: 'puestos', loadChildren: './pages/puestos/puestos.module#PuestosPageModule' }
 ];
 @NgModule({
   imports: [

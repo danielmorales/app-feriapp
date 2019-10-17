@@ -4,16 +4,21 @@ import { ComentariosComponent } from './comentarios/comentarios.component';
 import { ComentarioComponent } from './comentario/comentario.component';
 import { IonicModule } from '@ionic/angular';
 import { AvatarSelectorComponent } from './avatar-selector/avatar-selector.component';
+import { FeriasComponent } from './ferias/ferias.component';
+import { FeriaComponent } from './feria/feria.component';
 
 @NgModule({
   declarations: [
     ComentariosComponent,
     ComentarioComponent,
-    AvatarSelectorComponent
+    AvatarSelectorComponent,
+    FeriasComponent,
+    FeriaComponent
   ],
   exports: [
     ComentariosComponent,
-    AvatarSelectorComponent
+    AvatarSelectorComponent,
+    FeriasComponent
   ],
   imports: [
     CommonModule,

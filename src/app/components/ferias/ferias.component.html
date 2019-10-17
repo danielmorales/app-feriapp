@@ -1,0 +1,5 @@
+<p>
+  <app-feria *ngFor="let feria of ferias"
+              [feria] = "feria"
+              (clickFeria)="escuchaClick( $event )"></app-feria>
+</p>

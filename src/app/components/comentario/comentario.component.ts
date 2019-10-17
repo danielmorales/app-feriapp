@@ -13,7 +13,7 @@ export class ComentarioComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log('Aqui estoy en el componente comentario', this.post);
+    // console.log('Aqui estoy en el componente comentario', this.post);
   }
 
 }
