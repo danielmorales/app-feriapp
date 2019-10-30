@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Feria } from '../../interfaces/interfaces';
-import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-feria',
@@ -12,7 +11,7 @@ export class FeriaComponent implements OnInit {
   @Input() feria: Feria = {};
   @Output() clickFeria = new EventEmitter<number>();
 
-  constructor(private navCtrl: NavController) { }
+  constructor() { }
 
   ngOnInit() {
     

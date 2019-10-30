@@ -10,17 +10,6 @@ const Url = environment.url;
 const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }), body: your body data
 };
-
-
-return new Promise(resolve => {
-    this.httpClient.delete(URL, httpOptions)       
-                   .subscribe(res => {     
-                       resolve(res);
-                   }, err => {               
-                       resolve(err);
-                   });
-    });
-});
 */
 
 @Injectable({
@@ -38,22 +27,19 @@ export class PostsService {
   constructor(private http: HttpClient,
               private usuarioService: UsuarioService) { }
 
-  // funcion que no se utiliza, es para juntar una query con la url inicial
-  private ejecutarQuery<T>(query: string) {
-    query = Url + query;
-    return this.http.get(query);
-  }
   // tslint:disable-next-line: variable-name
-  getPosts(pull: boolean = false) {
+
+  // AGREGAR EL ID DEL PUESTO EN LAS VARIABLES DE ENTRADA
+  getPosts(id: number, pull: boolean = false) {
     if(pull){
       this.paginaPosts = 0;
     }
     this.paginaPosts++;
-    return this.http.get<RespuestaPosts>(`${Url}/api/comentariopuesto?pagina=${this.paginaPosts}&puesto=${this.puesto}`);
-  //  return this.ejecutarQuery(`/api/comentariopuesto?pagina=${this.paginaPosts}`);
+    return this.http.get<RespuestaPosts>(`${Url}/api/comentariopuesto?pagina=${this.paginaPosts}&puesto=${id}`);
   }
 
   crearPost(post){
+    // Le paso el token para crear un comentario identificando quien lo emite
     const headers = new HttpHeaders({
       'x-token': this.usuarioService.token
     });
@@ -63,7 +49,7 @@ export class PostsService {
       this.http.post(`${Url}/api/comentariopuesto`, post, {headers})
         .subscribe( resp => {
           console.log('Estoy en la promesa del crear post', resp);
-  
+
           //para poner el post de los primeros en el muro
           this.nuevoPost.emit(resp['post']);
           resolve(true);

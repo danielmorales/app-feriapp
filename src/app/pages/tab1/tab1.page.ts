@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PostsService } from '../../services/posts.service';
-import { Comentariopuesto } from '../../interfaces/interfaces';
+import { Router } from '@angular/router';
+import { ListaComprasService } from '../../services/lista-compras.service';
 
 @Component({
   selector: 'app-tab1',
@@ -9,45 +9,38 @@ import { Comentariopuesto } from '../../interfaces/interfaces';
 })
 export class Tab1Page implements OnInit {
 
-  posts: Comentariopuesto [] = [];
+  textoBuscar = '';
+  productosSeleccionados;
 
-  habilitado = true;
-
-  constructor(private postsService: PostsService) {}
+  constructor(private route: Router,
+              private listaCompras: ListaComprasService) {}
 
   ngOnInit() {
-    this.siguientes();
 
-    // para escuchar si es que hay algun nuevo post
-
-    this.postsService.nuevoPost
-      .subscribe(post =>{
-        console.log('estoy en el ngOnInit escuchando', post);
-        this.posts.unshift(post);
-      });
   }
 
-  recargar (event) {
-    this.siguientes(event, true),
-    this.habilitado = true;
-    this.posts = [];
+  buscar(event){
+    // console.log('estoy en la funcion buscar', event);
+    this.textoBuscar = event.detail.value;
+    // console.log('lo que busco', this.textoBuscar);
   }
-  
-  siguientes( event?, pull:boolean =false ){
-      
-    this.postsService.getPosts(pull)
-    .subscribe( resp => {
-      // console.log('Hola, aqui va lo que devuelve la API', resp);
-      this.posts.push(...resp.comentariopuesto);
-      console.log('Guardo en el arreglo posts lo que devuelve la api', this.posts);
 
-      if(event){
-        event.target.complete();
-        if(resp.comentariopuesto.length ===0){
-          //event.target.disabled = true;
-          this.habilitado = false;
-        }
-      }
-    });
-  } 
+  escuchaDelHijo(listaSeleccionados){
+
+    console.log('esto viene del componente productos: ', listaSeleccionados);
+    // Se asigna listaSeleccionados a una variable local
+    this.productosSeleccionados = listaSeleccionados;
+
+  }
+
+  clickSiguiente(){
+    console.log('Estoy dando click en Siguiente');
+    console.log('El objeto que necesito enviar', this.productosSeleccionados);
+    // Llamo al servicio que guardará localmente la lista para luego utilizarla en otra página
+    this.listaCompras.guardarListaCompras(this.productosSeleccionados);
+    
+    
+    // this.route.navigateByUrl('/ferias');
+  }
+
 }

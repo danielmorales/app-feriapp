@@ -17,9 +17,15 @@ const routes: Routes = [
     pathMatch:'full',
     redirectTo: 'main/tabs/tab1'
   },
-  { path: 'ferias', loadChildren: './pages/ferias/ferias.module#FeriasPageModule' },
   { path: 'tab4', loadChildren: './pages/tab4/tab4.module#Tab4PageModule' },
-  { path: 'puestos', loadChildren: './pages/puestos/puestos.module#PuestosPageModule' }
+  { path: 'puestos/:id_feria', loadChildren: './pages/puestos/puestos.module#PuestosPageModule' },
+  { path: 'comentarios/:id_puesto', loadChildren: './pages/comentarios/comentarios.module#ComentariosPageModule' },
+  { path: 'ferias', loadChildren: './pages/ferias/ferias.module#FeriasPageModule' },
+  {
+    path: '**',
+    pathMatch:'full',
+    redirectTo: 'main/tabs/tab1'
+  }
 ];
 @NgModule({
   imports: [

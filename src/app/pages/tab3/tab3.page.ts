@@ -27,7 +27,7 @@ export class Tab3Page implements OnInit{
     if(fActualizar.invalid){return;}
 
     const actualizado = await this.usuarioService.actualizarCuenta(this.cuenta);
-    console.log((actualizado));
+    console.log('estoy abajo del await', actualizado);
 
     if(actualizado){
       //toast con el mensaje de actualizado

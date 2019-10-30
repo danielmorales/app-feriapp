@@ -6,6 +6,11 @@ import { IonicModule } from '@ionic/angular';
 import { AvatarSelectorComponent } from './avatar-selector/avatar-selector.component';
 import { FeriasComponent } from './ferias/ferias.component';
 import { FeriaComponent } from './feria/feria.component';
+import { PuestosComponent } from './puestos/puestos.component';
+import { PuestoComponent } from './puesto/puesto.component';
+import { ProductosComponent } from './productos/productos.component';
+import { ProductoComponent } from './producto/producto.component';
+import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -13,16 +18,23 @@ import { FeriaComponent } from './feria/feria.component';
     ComentarioComponent,
     AvatarSelectorComponent,
     FeriasComponent,
-    FeriaComponent
+    FeriaComponent,
+    PuestosComponent,
+    PuestoComponent,
+    ProductosComponent,
+    ProductoComponent
   ],
   exports: [
     ComentariosComponent,
     AvatarSelectorComponent,
-    FeriasComponent
+    FeriasComponent,
+    PuestosComponent,
+    ProductosComponent
   ],
   imports: [
     CommonModule,
-    IonicModule
+    IonicModule,
+    PipesModule
   ]
 })
 export class ComponentsModule { }

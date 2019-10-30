@@ -9,28 +9,23 @@
       FeriApp
     </ion-title>
   </ion-toolbar>
+
+  <ion-searchbar animated
+                 placeholder="Buscar productos"
+                 (ionChange)="buscar( $event )"></ion-searchbar>
+
 </ion-header>
 
 <ion-content color="light">
 
-    <!--Refresher-->
-
-    <ion-refresher slot="fixed" (ionRefresh)="recargar($event)">
-      <ion-refresher-content></ion-refresher-content>
-    </ion-refresher>
-
-    <!--Posts-->
-    <app-comentarios [posts]="posts"></app-comentarios>
-
-    <!-- Infinite Scroll-->
-    <!-- Si no está habilidado, entonces-->
-    <ion-infinite-scroll [disabled]="!habilitado"
-                         threshold="150px"
-                         (ionInfinite)="siguientes($event)">
-      <ion-infinite-scroll-content
-        loadingSpinner="bubbles"
-        loadingText="Cargando más comentarios...">
-      </ion-infinite-scroll-content>
-    </ion-infinite-scroll>
+  <app-productos [textoBuscar]="textoBuscar" (productosSeleccionados)="escuchaDelHijo($event)"></app-productos>
     
 </ion-content>
+
+<!-- Aca debe ir el boton para pasar al siguiente paso, que es selecionar la feria -->
+<footer>
+
+    <ion-button expand="full"
+                (click)="clickSiguiente()"> Siguiente </ion-button>
+     
+</footer>

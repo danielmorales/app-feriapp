@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FeriasService } from '../../services/ferias.service';
-import { Ferias, Feria, Puesto } from '../../interfaces/interfaces';
-import { PuestosService } from '../../services/puestos.service';
+import { Feria } from '../../interfaces/interfaces';
+
+// Rutas con argumentos para ver cada feria por separado
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-tab4',
@@ -12,34 +14,21 @@ export class Tab4Page implements OnInit {
 
   ferias: Feria [] = [];
 
-  puestos: Puesto [] = [];
-
-  feriaSeleccionada: number;
-
   constructor(private feriaService: FeriasService,
-              private puestoService: PuestosService) { }
+              private router: Router) { }
 
   ngOnInit() {
     this.feriaService.getFerias()
       .subscribe( resp => {
-        //console.log(resp);
         this.ferias.push(...resp.ferias);
       })
-    //  console.log('Imprimiendo el arreglo ferias: ', this.ferias);
-
   }
 
   escuchadelHijo(feriaelegida){
-    console.log('esto viene del hijo del hijo: ', feriaelegida);
-    this.feriaSeleccionada = feriaelegida;
+    // console.log('esto viene del hijo del hijo: ', feriaelegida);
 
-
-    this.puestoService.getPuestos(feriaelegida)
-    .subscribe( resp => {
-      //console.log('Hola estoy imprimiendo los puestos',resp);
-      this.puestos.push(...resp.puestos);
-    })
-    console.log('Imprimiendo el arreglo de puestos de la feria ',feriaelegida,': ', this.puestos);
+    //Navegar a la ruta de la feria
+    this.router.navigate( ['/puestos',feriaelegida] );
 
   }
 

@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Comentariopuesto } from '../../interfaces/interfaces';
 
 @Component({
-  selector: 'app-comentarios',
+  selector: 'app-comentariosComponente',
   templateUrl: './comentarios.component.html',
   styleUrls: ['./comentarios.component.scss'],
 })

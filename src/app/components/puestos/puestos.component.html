@@ -1,3 +1,5 @@
 <p>
-  puestos works!
+  <app-puesto *ngFor="let puesto of puestos"
+              [puesto] = "puesto"
+              (clickPuesto)="escuchaClick( $event )"></app-puesto>
 </p>

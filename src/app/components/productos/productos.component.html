@@ -1,0 +1,10 @@
+  <ion-list>
+    
+
+    <app-producto *ngFor= "let producto of productos | filtro: textoBuscar: 'nombre_producto' "
+                  [producto] = "producto"
+                  (ionChange) = "onClick( $event, producto)"
+                  [id_producto]= "producto.id_producto"
+                  [listaCheck]="lista"></app-producto>
+    
+  </ion-list>

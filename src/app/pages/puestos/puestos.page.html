@@ -1,9 +1,29 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>puestos</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-header no-border>
+    <ion-toolbar>
+  
+      <ion-buttons slot="end">
+        <ion-icon slot="icon-only" name="contacts"></ion-icon>
+      </ion-buttons>
+
+      <ion-buttons slot="start">
+          <ion-back-button defaultHref="/"></ion-back-button>
+      </ion-buttons>
+  
+      <ion-title>
+        FeriApp
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
 
 <ion-content>
 
+    <ion-title align="center">
+        Feria 1
+    </ion-title>
+
+  <app-puestosComponente [puestos]="puestos"
+                    (clickPuesto)="escuchadelHijo( $event)"></app-puestosComponente>
+
 </ion-content>
+
+

@@ -1,12 +1,19 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Ferias</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-header no-border>
+    <ion-toolbar>
+  
+      <ion-buttons slot="start">
+        <ion-icon slot="icon-only" name="contacts"></ion-icon>
+      </ion-buttons>
+  
+      <ion-title>
+        FeriApp
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
 
 <ion-content>
 
-<app-ferias [ferias]="ferias"
-            (clickFeria)="escuchadelHijo( $event )"></app-ferias>
+<app-feriasComponente [ferias]="ferias"
+            (clickFeria)="escuchadelHijo( $event )"></app-feriasComponente>
 
 </ion-content>

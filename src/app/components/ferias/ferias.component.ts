@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Feria } from '../../interfaces/interfaces';
 
 @Component({
-  selector: 'app-ferias',
+  selector: 'app-feriasComponente',
   templateUrl: './ferias.component.html',
   styleUrls: ['./ferias.component.scss'],
 })

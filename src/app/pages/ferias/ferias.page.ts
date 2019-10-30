@@ -1,5 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
-import {  Feria } from '../../interfaces/interfaces';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-ferias',
@@ -8,12 +7,9 @@ import {  Feria } from '../../interfaces/interfaces';
 })
 export class FeriasPage implements OnInit {
 
-  
-
   constructor() { }
 
   ngOnInit() {
-    
   }
 
 }
