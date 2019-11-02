@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ListaComprasService } from '../../services/lista-compras.service';
+import { Checkbox } from '../../interfaces/interfaces';
 
 @Component({
   selector: 'app-tab1',
@@ -27,20 +28,22 @@ export class Tab1Page implements OnInit {
 
   escuchaDelHijo(listaSeleccionados){
 
-    console.log('esto viene del componente productos: ', listaSeleccionados);
-    // Se asigna listaSeleccionados a una variable local
+    // ListaSeleccionados proviene del componente productos y se asigna a una variable local
     this.productosSeleccionados = listaSeleccionados;
 
   }
 
+
+
   clickSiguiente(){
-    console.log('Estoy dando click en Siguiente');
-    console.log('El objeto que necesito enviar', this.productosSeleccionados);
-    // Llamo al servicio que guardará localmente la lista para luego utilizarla en otra página
-    this.listaCompras.guardarListaCompras(this.productosSeleccionados);
+
+    // Aqui se transforma solo a numeros
+    var lista = this.listaCompras.extraerIds(this.productosSeleccionados);
+
+    // Guardar la lista con la funcion del service
+    this.listaCompras.guardarListaCompras(lista);
     
-    
-    // this.route.navigateByUrl('/ferias');
+    this.route.navigateByUrl('/ferias');
   }
 
 }

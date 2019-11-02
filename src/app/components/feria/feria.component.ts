@@ -17,7 +17,7 @@ export class FeriaComponent implements OnInit {
     
   }
 
-  mostrarPuestos(){
+  obtenerIdFeria(){
     // console.log('estoy haciendo click en el componente feria, este es el id: ', this.feria.id_feria);
     // this.navCtrl.navigateRoot('/puestos', {animated: true});
     this.clickFeria.emit(this.feria.id_feria);

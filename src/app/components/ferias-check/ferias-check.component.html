@@ -1,0 +1,10 @@
+<ion-list>
+
+  <ion-list-header> Seleccione las ferias que desea consultar </ion-list-header>
+
+  <app-feria-check *ngFor="let feria of ferias | filtro: textoBuscar: 'nombre_feria'"
+                   [feria] = "feria"
+                   (ionChange) = "onClick( $event, feria)"
+                   [listaCheck] = "lista"></app-feria-check>
+
+</ion-list>                     

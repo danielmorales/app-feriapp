@@ -21,6 +21,7 @@ const routes: Routes = [
   { path: 'puestos/:id_feria', loadChildren: './pages/puestos/puestos.module#PuestosPageModule' },
   { path: 'comentarios/:id_puesto', loadChildren: './pages/comentarios/comentarios.module#ComentariosPageModule' },
   { path: 'ferias', loadChildren: './pages/ferias/ferias.module#FeriasPageModule' },
+  { path: 'resultados', loadChildren: './pages/resultados/resultados.module#ResultadosPageModule' },
   {
     path: '**',
     pathMatch:'full',

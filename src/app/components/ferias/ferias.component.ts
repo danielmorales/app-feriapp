@@ -17,7 +17,7 @@ export class FeriasComponent implements OnInit {
     // console.log('Aqui estoy en el componente ferias', this.ferias);
   }
 
-  escuchaClick(id_feria){
+  escuchaDelHijo(id_feria){
     // console.log('imprimo el id de la feria que viene del componente hijo', id_feria);
     this.clickFeria.emit(id_feria);
   }

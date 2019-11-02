@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Producto, Carrito } from '../../interfaces/interfaces';
+import { Producto, Checkbox } from '../../interfaces/interfaces';
 import { ProductosService } from '../../services/productos.service';
 
 @Component({
@@ -16,9 +16,8 @@ export class ProductosComponent implements OnInit {
   // Este output es para la lista de productos seleccionados
   @Output() productosSeleccionados = new EventEmitter();
   
-
   // Para lista de ids y booleans del checkbox
-  lista: Carrito [] = [];
+  lista: Checkbox [] = [];
   // Largo de la lista de productos
   largo: number;
 
@@ -32,7 +31,7 @@ export class ProductosComponent implements OnInit {
 
   obtenerProductos(){
 
-     this.productoService.getProductos()
+    this.productoService.getProductos()
       .subscribe(resp => {
         this.productos.push(...resp.productos);
         // console.log('Esta es la respuesta completa', resp);
@@ -52,7 +51,6 @@ export class ProductosComponent implements OnInit {
     for (var i = 0; i < largo; i++) {
       this.lista.push({id: this.productos[i].id_producto, ok: false});
     }
-    console.log('lista vacia generada', this.lista);
 
     return this.lista;
 

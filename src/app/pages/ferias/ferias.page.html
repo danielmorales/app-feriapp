@@ -15,8 +15,21 @@
     </ion-toolbar>
   </ion-header>
 
+  <ion-searchbar animated
+                 placeholder="Buscar ferias"
+                 (ionChange)="buscar( $event )"></ion-searchbar>
+
 <ion-content>
 
-  
+  <app-ferias-check [textoBuscar]="textoBuscar" (feriasSeleccionadas)="escuchaDelHijo($event)" ></app-ferias-check >
 
 </ion-content>
+
+<!-- Aca debe ir el boton para pasar a la siguiente vista, que es el despliegue de la información mediante grids -->
+
+<footer>
+
+    <ion-button expand="full"
+                (click)="clickSiguiente()"> Siguiente </ion-button>
+     
+</footer>

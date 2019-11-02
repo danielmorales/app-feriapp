@@ -60,10 +60,22 @@ export interface Producto {
 
 // Para la lista de compras con el checkbox
 
-export interface Carrito {
+export interface Checkbox {
   id: number;
   ok: boolean;
 }
+
+// Los productos de un puesto en particular
+export interface ProductosPuestoLista {
+  ProductosPuesto: ProductosPuesto[];
+}
+
+export interface ProductosPuesto {
+  fk_id_producto: number;
+  precio: number;
+  updated_at: string;
+}
+
 
   /*
 export interface ComentarioPuesto {

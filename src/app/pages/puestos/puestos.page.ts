@@ -26,7 +26,7 @@ export class PuestosPage implements OnInit {
 
   ngOnInit() {
     this.puestoService.getPuestos(this.feria)
-    .subscribe( resp => {
+      .subscribe( resp => {
       //console.log('Hola estoy imprimiendo los puestos',resp);
       this.puestos.push(...resp.puestos);
     })
