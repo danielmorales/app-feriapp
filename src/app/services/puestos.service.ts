@@ -21,5 +21,6 @@ export class PuestosService {
   getProductosPuesto(id: number){
     return this.http.get<ProductosPuestoLista>(`${Url}/api/puesto-producto/${id}`)
   }
+
   
 }

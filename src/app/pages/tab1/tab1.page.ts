@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ListaComprasService } from '../../services/lista-compras.service';
 import { Checkbox } from '../../interfaces/interfaces';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
@@ -14,7 +15,8 @@ export class Tab1Page implements OnInit {
   productosSeleccionados;
 
   constructor(private route: Router,
-              private listaCompras: ListaComprasService) {}
+              private listaCompras: ListaComprasService,
+              private navCtrl: NavController) {}
 
   ngOnInit() {
 
@@ -43,7 +45,8 @@ export class Tab1Page implements OnInit {
     // Guardar la lista con la funcion del service
     this.listaCompras.guardarListaCompras(lista);
     
-    this.route.navigateByUrl('/ferias');
+    // this.route.navigateByUrl('/ferias');
+    this.navCtrl.navigateRoot('/ferias', {animated: true});
   }
 
 }

@@ -47,6 +47,7 @@ export interface Puesto {
   nombre_puesto?: string;
   descripcion_puesto?: string;
   fk_id_feria?: number;
+  productos?: Producto[];
 }
 export interface Productos {
   productos: Producto[];
@@ -56,6 +57,16 @@ export interface Producto {
   id_producto: number;
   nombre_producto: string;
   descripcion_producto: string;
+  img_producto?: string;
+  puestoproducto?: Puestoproducto;
+}
+
+export interface Puestoproducto {
+  precio: number;
+  created_at: string;
+  updated_at: string;
+  fk_id_producto: number;
+  fk_id_puesto: number;
 }
 
 // Para la lista de compras con el checkbox

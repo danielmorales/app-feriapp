@@ -1,0 +1,40 @@
+<!-- Hacer un grid con dos columnas -->
+
+<!-- Feria, Ubicación -->
+
+<!-- Tomate                  -            Precio     -->
+<!-- Puesto 1, ubicación     -            $450 x kg  -->
+<!-- Puesto 5, ubicación     -            $700 x kg  -->
+
+<!-- Cebolla                 -            Precio     -->
+<!-- Puesto 5, ubicación     -            $600 x kg  -->
+<!-- Puesto 14, ubicación    -            $700 x kg  -->
+<!-- Puesto 7, ubicación     -            $850 x kg  -->
+
+<!-- Naranja                 -            Precio      -->
+<!-- Puesto 2, ubicación     -            $1000 x kg  -->
+<!-- Puesto 9, ubicación     -            $1200 x kg  -->
+
+<!-- IDS de productos elegidos por el usuario -->
+
+<!-- Hacer un ngFor de los productos -->
+<!--       Para cada producto, hacer una búsqueda de ese ID_PRODUCTO en todos los puestos de la feria y almacenar esos puestos en un arreglo -->
+
+
+<ion-grid *ngFor="let puesto of puestosConElProducto">
+
+    <ion-row >
+
+        <ion-col>
+            <ion-item> {{puesto.nombre_puesto}} </ion-item>
+        </ion-col>
+        <ion-col >
+            <app-productos-resultado [puesto]=puesto [producto]=producto></app-productos-resultado>
+        </ion-col>
+
+    </ion-row>
+
+
+</ion-grid>
+
+

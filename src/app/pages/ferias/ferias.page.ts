@@ -29,7 +29,7 @@ export class FeriasPage implements OnInit {
 
   escuchaDelHijo(listaSeleccionados){
 
-    console.log('esto viene del componente productos: ', listaSeleccionados);
+    // console.log('esto viene del componente app-ferias-check: ', listaSeleccionados);
     // Se asigna listaSeleccionados a una variable local
     this.feriasSeleccionadas = listaSeleccionados;
 
@@ -37,11 +37,13 @@ export class FeriasPage implements OnInit {
 
   clickSiguiente(){
 
-    // Aqui se transforma solo a numeros
+    // Se extraen los IDS que están en true, en la lista del tipo Checkbox
     var lista = this.listaCompras.extraerIds(this.feriasSeleccionadas);
 
+    // Busco esos IDS en todas las ferias
+
     // Llamo al servicio que guardará localmente la lista para luego utilizarla en otra página
-    this.listaCompras.guardarListaFerias(lista);
+    this.listaCompras.guardarListaFeriasSeleccionadas(lista);
     
     this.route.navigateByUrl('/resultados');
   }

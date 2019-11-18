@@ -52,11 +52,16 @@ export class UsuarioService {
   }
 
   registro( usuario: Cuenta){
+
     console.log('entre a la funcion registro');
+
     return new Promise(resolve=>{
+
       this.http.post(`${Url}/api/cuenta`, usuario)
         .subscribe( async resp => {
+
           console.log(resp);
+          
           if(resp['ok']){
             console.log('Hola estoy en el if de la funcion REGISTRO,si es que el token fue OK');
             await this.guardarToken(resp['tokenuser']);

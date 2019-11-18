@@ -13,6 +13,8 @@ import { ProductoComponent } from './producto/producto.component';
 import { PipesModule } from '../pipes/pipes.module';
 import { FeriaCheckComponent } from './feria-check/feria-check.component';
 import { FeriasCheckComponent } from './ferias-check/ferias-check.component';
+import { FeriasResultadoComponent } from './ferias-resultado/ferias-resultado.component';
+import { ProductosResultadoComponent } from './productos-resultado/productos-resultado.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { FeriasCheckComponent } from './ferias-check/ferias-check.component';
     ProductosComponent,
     ProductoComponent,
     FeriaCheckComponent,
-    FeriasCheckComponent
+    FeriasCheckComponent,
+    FeriasResultadoComponent,
+    ProductosResultadoComponent
   ],
   exports: [
     ComentariosComponent,
@@ -34,7 +38,9 @@ import { FeriasCheckComponent } from './ferias-check/ferias-check.component';
     FeriasComponent,
     PuestosComponent,
     ProductosComponent,
-    FeriasCheckComponent
+    FeriasCheckComponent,
+    FeriasResultadoComponent,
+    ProductosResultadoComponent
   ],
   imports: [
     CommonModule,

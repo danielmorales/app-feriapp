@@ -61,7 +61,7 @@ export class LoginPage implements OnInit {
     console.log((fRegistro.valid));
 
     if(fRegistro.invalid){
-      console.log('holi');
+      console.log('formulario invalido');
       return;
     }
 
