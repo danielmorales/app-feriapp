@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Checkbox, ProductosPuesto } from '../interfaces/interfaces';
+import { Checkbox, ProductosPuesto, IonRadio } from '../interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +11,9 @@ export class ListaComprasService {
 
   // Lista que se utilizará para buscar los productos en los puestos
   idsProductos: number [] = [];
+
+  // Lista final con { id_producto, id_puesto }
+  listaFinal: IonRadio [] = [];
 
   constructor() { }
 
@@ -62,6 +65,13 @@ export class ListaComprasService {
 
     // console.log('Estoy en el servicio ListaCompras, estas son las ferias', this.idsFerias);
   
+  }
+
+  guardarListaFinal(lista: IonRadio []){
+
+    this.listaFinal = lista.slice();
+
+    console.log('Estoy en el servicio, esta es la lista final', this.listaFinal);
   }
 
 

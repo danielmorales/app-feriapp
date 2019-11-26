@@ -20,21 +20,50 @@
 <!-- Hacer un ngFor de los productos -->
 <!--       Para cada producto, hacer una búsqueda de ese ID_PRODUCTO en todos los puestos de la feria y almacenar esos puestos en un arreglo -->
 
-
+<ion-radio-group>
 <ion-grid *ngFor="let puesto of puestosConElProducto">
 
-    <ion-row >
+    <ion-row (ionSelect)="radioSelect($event, producto)">
 
         <ion-col>
-            <ion-item> {{puesto.nombre_puesto}} </ion-item>
+
+            <ion-item>
+                <ion-label>
+                    {{puesto.nombre_puesto}}
+                </ion-label>
+                <ion-radio slot="end" [value]="puesto.id_puesto"></ion-radio>
+            </ion-item>
+            
+
+
         </ion-col>
-        <ion-col >
-            <app-productos-resultado [puesto]=puesto [producto]=producto></app-productos-resultado>
+        
+        
+    </ion-row>
+
+    <ion-row >
+        
+        <ion-col col-8>
+        
+            <app-productos-resultado [puesto]=puesto [producto]=producto [precioMasBajo]=precioMasBajoProducto></app-productos-resultado>
+                
         </ion-col>
+
+        <ion-col col-4>
+            
+            <ion-item>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+            </ion-item>
+          
+        </ion-col>
+
 
     </ion-row>
 
-
 </ion-grid>
 
-
+</ion-radio-group>

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Feria, Producto } from '../../interfaces/interfaces';
+import { Feria, Producto, IonRadio } from '../../interfaces/interfaces';
 import { ListaComprasService } from '../../services/lista-compras.service';
 import { FeriasService } from '../../services/ferias.service';
 import { ProductosService } from '../../services/productos.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-resultados',
@@ -29,10 +30,14 @@ export class ResultadosPage implements OnInit {
   // NO ES NECESARIO PORQUE EN PUESTOS YA VIENE TODA LA INFO DE LOS PRODUCTOS
   productos: Producto [] = []
 
+  // Array que guarda los productos y ferias para realizar compras
+  listaFinal: IonRadio [] = [];
+
 
   constructor(private listaService: ListaComprasService,
               private feriasService: FeriasService,
-              private productosService: ProductosService){
+              private productosService: ProductosService,
+              private navCtrl: NavController){
     
     // Se le asignan los IDs de las ferias seleccionadas por el usuario
     this.idsFerias = this.listaService.idsFerias;
@@ -106,6 +111,40 @@ export class ResultadosPage implements OnInit {
     }
     // console.log('Dentro de la funcion filtrarFerias: ', feriasSeleccionadas);
     return feriasSeleccionadas;
+  }
+
+  // Esta función retorna la listaFinal de producto-puesto para hacer el recorrido de la feria
+  recibeDelHijo(elemento){
+
+    if (this.listaFinal.length == 0) {
+
+      this.listaFinal.push(elemento[0]);
+      
+    }
+    else{
+
+      for (let i = 0; i < this.listaFinal.length; i++) {
+
+        if(this.listaFinal[i].id_producto == elemento[0].id_producto){
+          this.listaFinal[i].value = elemento[0].value;
+          console.log('FUNCIONTERMINADA', this.listaFinal);
+          return this.listaFinal;
+        }
+    
+      }
+
+      this.listaFinal.push(elemento[0]);
+      
+
+    }
+    console.log('FUNCIONTERMINADA', this.listaFinal);
+    return this.listaFinal;
+
+  }
+
+  clickSiguiente(){
+    this.listaService.guardarListaFinal(this.listaFinal);
+    this.navCtrl.navigateRoot('/recorrido', {animated: true});
   }
 
 

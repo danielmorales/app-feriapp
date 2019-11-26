@@ -76,6 +76,13 @@ export interface Checkbox {
   ok: boolean;
 }
 
+// Para marcar puestos con Ion-Radio
+export interface IonRadio {
+  id_producto: number;
+  value: number;
+}
+
+
 // Los productos de un puesto en particular
 export interface ProductosPuestoLista {
   ProductosPuesto: ProductosPuesto[];

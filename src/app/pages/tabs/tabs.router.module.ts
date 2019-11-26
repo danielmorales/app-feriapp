@@ -14,6 +14,12 @@ const routes: Routes = [
             path: '',
             loadChildren: () =>
               import('../tab1/tab1.module').then(m => m.Tab1PageModule)
+          },
+          // Agregué esta página para que también tuviera tabs!!!
+          {
+            path: 'ferias',
+            loadChildren: () =>
+              import('../ferias/ferias.module').then(m => m.FeriasPageModule)
           }
         ]
       },

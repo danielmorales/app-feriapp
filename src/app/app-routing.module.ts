@@ -20,14 +20,15 @@ const routes: Routes = [
   { path: 'tab4', loadChildren: './pages/tab4/tab4.module#Tab4PageModule' },
   { path: 'puestos/:id_feria', loadChildren: './pages/puestos/puestos.module#PuestosPageModule' },
   { path: 'comentarios/:id_puesto', loadChildren: './pages/comentarios/comentarios.module#ComentariosPageModule' },
-  { path: 'ferias', loadChildren: './pages/ferias/ferias.module#FeriasPageModule' },
+  { path: 'ferias', loadChildren: './pages/ferias/ferias.module#FeriasPageModule',canLoad: [UsuarioGuard] },
   { path: 'resultados', loadChildren: './pages/resultados/resultados.module#ResultadosPageModule' },
+  { path: 'recorrido', loadChildren: './pages/recorrido/recorrido.module#RecorridoPageModule' },
   {
     path: '**',
     pathMatch:'full',
     redirectTo: 'main/tabs/tab1'
-  }
-];
+  }  
+  ];
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })

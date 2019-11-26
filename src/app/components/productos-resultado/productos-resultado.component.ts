@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Puesto, Producto } from '../../interfaces/interfaces';
 
 @Component({
@@ -14,22 +14,34 @@ export class ProductosResultadoComponent implements OnInit {
   // Contiene los puestos donde hay que buscar el producto
   @Input() puesto: Puesto;
 
-  precio;
+  // Contiene el precio más bajo para ocuparlo en in ngIf
+  @Input() precioMasBajo: number;
+
+
+  precioVista: number;
 
   constructor() {}
 
   ngOnInit() {
 
-    this.buscarPrecio();
+    console.log('Este es el producto', this.producto);
+    console.log('Este es el puesto', this.puesto);
+
+    this.precioVista = this.buscarPrecio(this.producto, this.puesto);
+
+    // this.precio.emit( this.buscarPrecio(this.producto, this.puesto) );
 
   }
 
-  buscarPrecio(){
-   for (let i = 0; i < this.puesto.productos.length; i++) {
-     if (this.producto.id_producto==this.puesto.productos[i].id_producto) {
-       this.precio=this.puesto.productos[i].puestoproducto.precio
-     }   
-   }
+  buscarPrecio(producto: Producto, puesto: Puesto){
+    var precio: number;
+    for (let i = 0; i < puesto.productos.length; i++) {
+      if (producto.id_producto == puesto.productos[i].id_producto) {
+        precio = puesto.productos[i].puestoproducto.precio
+      }  
+    }
+
+    return precio;
   }
 
 

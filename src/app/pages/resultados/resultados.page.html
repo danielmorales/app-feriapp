@@ -13,19 +13,18 @@
         FeriApp
       </ion-title>
     </ion-toolbar>
-  </ion-header>
+</ion-header>
 
 <ion-content>
   
 
-  <ion-list-header> Resultados de búsqueda </ion-list-header>
+  <ion-list-header> Seleccione los puestos en los que desea comprar. </ion-list-header>
   
   <ion-list *ngFor="let feria of feriasSeleccionadas">
 
     <ion-item color="primary"> {{feria.nombre_feria}} </ion-item>
     <ion-item color="light"> {{feria.descripcion_feria}} </ion-item>
     
-    <!-- LE ASIGNO UNA FERIA A CADA INSTANCIA DEL COMPONENTE FERIAS-RESULTADO, además de los productos seleccionados -->
     <!--<app-ferias-resultado [feria]=feria [productosSeleccionados]=productosSeleccionados > </app-ferias-resultado> -->
     <ion-grid *ngFor="let producto of productosSeleccionados">
 
@@ -34,17 +33,14 @@
           <ion-col>
               <ion-item> {{producto.nombre_producto}} </ion-item>
           </ion-col>
-          <ion-col>
-              <ion-item> Precio por kg o unidad </ion-item>
-          </ion-col>
   
       </ion-row>
   
       
       <!-- HACER ESTO COMPONENTE. Hacer un ngFor aqui para recorrer puestos en donde está el producto-->
-      <app-ferias-resultado [feria]=feria [producto]=producto ></app-ferias-resultado>
+      <app-ferias-resultado [feria]=feria [producto]=producto (enviarSeleccionado)="recibeDelHijo($event)"></app-ferias-resultado>
   
-  
+      <!-- Button strong a los puestos seleccionados, slot "end"-->
   
   </ion-grid>
 
@@ -53,3 +49,10 @@
 
 
 </ion-content>
+
+<footer>
+
+    <ion-button expand="full"
+                (click)="clickSiguiente()"> Siguiente </ion-button>
+     
+</footer>
