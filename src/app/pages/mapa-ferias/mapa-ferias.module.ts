@@ -5,13 +5,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { RecorridoPage } from './recorrido.page';
-import { ComponentsModule } from '../../components/components.module';
+import { MapaFeriasPage } from './mapa-ferias.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: RecorridoPage
+    component: MapaFeriasPage
   }
 ];
 
@@ -20,9 +19,8 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes),
-    ComponentsModule
+    RouterModule.forChild(routes)
   ],
-  declarations: [RecorridoPage]
+  declarations: [MapaFeriasPage]
 })
-export class RecorridoPageModule {}
+export class MapaFeriasPageModule {}

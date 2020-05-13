@@ -15,6 +15,9 @@ import { FeriaCheckComponent } from './feria-check/feria-check.component';
 import { FeriasCheckComponent } from './ferias-check/ferias-check.component';
 import { FeriasResultadoComponent } from './ferias-resultado/ferias-resultado.component';
 import { ProductosResultadoComponent } from './productos-resultado/productos-resultado.component';
+import { PuestoRecorridoComponent } from './puesto-recorrido/puesto-recorrido.component';
+import { CompararPreciosComponent } from './comparar-precios/comparar-precios.component';
+import { CompararNombreProductoComponent } from './comparar-nombre-producto/comparar-nombre-producto.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { ProductosResultadoComponent } from './productos-resultado/productos-res
     FeriaCheckComponent,
     FeriasCheckComponent,
     FeriasResultadoComponent,
-    ProductosResultadoComponent
+    ProductosResultadoComponent,
+    PuestoRecorridoComponent,
+    CompararPreciosComponent,
+    CompararNombreProductoComponent
   ],
   exports: [
     ComentariosComponent,
@@ -40,7 +46,10 @@ import { ProductosResultadoComponent } from './productos-resultado/productos-res
     ProductosComponent,
     FeriasCheckComponent,
     FeriasResultadoComponent,
-    ProductosResultadoComponent
+    ProductosResultadoComponent,
+    PuestoRecorridoComponent,
+    CompararPreciosComponent,
+    CompararNombreProductoComponent
   ],
   imports: [
     CommonModule,

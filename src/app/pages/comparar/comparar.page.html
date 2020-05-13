@@ -1,0 +1,68 @@
+<ion-header no-border>
+    <ion-toolbar>
+  
+      <ion-buttons slot="end">
+        <ion-icon slot="icon-only" name="contacts"></ion-icon>
+      </ion-buttons>
+  
+      <ion-title>
+        Ahorro
+      </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid>
+
+    <ion-row>
+
+      <ion-col>
+        <ion-item>
+          Mi lista
+        </ion-item>
+      </ion-col>
+
+      <ion-col>
+        <ion-item>
+          Precios supermercado
+        </ion-item>
+      </ion-col>
+
+      <ion-col>
+        <ion-item>
+          Precios feria
+        </ion-item>
+      </ion-col>
+
+    </ion-row>
+
+    <ion-row *ngFor="let item of productosSupermercadoSeleccionados">
+
+        <ion-col>
+
+          <app-comparar-nombre-producto [productoSupermercado]=item></app-comparar-nombre-producto>
+
+        </ion-col>
+    
+        <ion-col>
+          <ion-list>
+    
+            <ion-item>
+              ${{item.precio}} x kg.
+            </ion-item>
+            
+          </ion-list>          
+
+        </ion-col>
+    
+        <ion-col>
+            <app-comparar-precios [productoSupermercadoHijo]=item></app-comparar-precios>
+        </ion-col>
+    
+      </ion-row>
+
+
+  </ion-grid>
+
+</ion-content>

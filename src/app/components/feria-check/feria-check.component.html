@@ -6,9 +6,8 @@
         <ion-label>
           {{feria.nombre_feria}}
         </ion-label>
-        
-        <ion-checkbox slot="end" color="secondary" mode= "ios" [checked]="checkear()"></ion-checkbox>
-          
+
+        <ion-radio slot="end" [value]="feria.id_feria" [checked]="checkear()"></ion-radio>          
   
       
     </ion-item> 

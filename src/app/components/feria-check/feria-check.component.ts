@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Feria } from '../../interfaces/interfaces';
+import { Feria, CheckIonRadio } from '../../interfaces/interfaces';
 
 @Component({
   selector: 'app-feria-check',
@@ -9,19 +9,31 @@ import { Feria } from '../../interfaces/interfaces';
 export class FeriaCheckComponent implements OnInit {
 
   @Input() feria: Feria;
-  @Input() listaCheck;
+
+  @Input() check: CheckIonRadio;
 
 
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+
+  }
 
   checkear(){
 
-    var encontrado = this.listaCheck.find( x => x.id == this.feria.id_feria)
-    var check = encontrado.ok;
+    if(this.feria.id_feria == this.check.value && this.check.checked==true){
+      return true;
+    }
 
-    return check;
+    else{
+      return false;
+    }
+
+
+ //   var encontrado = this.listaCheck.find( x => x.id == this.feria.id_feria)
+ //   var check = encontrado.ok;
+
+
   }
 
 

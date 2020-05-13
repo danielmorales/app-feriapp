@@ -19,6 +19,7 @@ export class ProductosResultadoComponent implements OnInit {
 
 
   precioVista: number;
+  kgunidad: number;
 
   constructor() {}
 
@@ -38,6 +39,7 @@ export class ProductosResultadoComponent implements OnInit {
     for (let i = 0; i < puesto.productos.length; i++) {
       if (producto.id_producto == puesto.productos[i].id_producto) {
         precio = puesto.productos[i].puestoproducto.precio
+        this.kgunidad = puesto.productos[i].puestoproducto.kgunidad;
       }  
     }
 

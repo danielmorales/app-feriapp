@@ -7,7 +7,7 @@ import { Checkbox, ProductosPuesto, IonRadio } from '../interfaces/interfaces';
 export class ListaComprasService {
 
   // Lista que se utilizará para buscar las ferias elegidas y sus puestos
-  idsFerias: number [] = [];
+  idFeriaSeleccionada: number;
 
   // Lista que se utilizará para buscar los productos en los puestos
   idsProductos: number [] = [];
@@ -59,11 +59,11 @@ export class ListaComprasService {
   }
 
   // La entrada es un array de numeros, los cuales representan los ids de las ferias seleccionadas por el usuario
-  guardarListaFeriasSeleccionadas(lista: number []){
+  guardaFeriaSeleccionada(feria: number){
 
-    this.idsFerias = lista.slice();
+    this.idFeriaSeleccionada = feria;
 
-    // console.log('Estoy en el servicio ListaCompras, estas son las ferias', this.idsFerias);
+    console.log('Estoy en el servicio ListaCompras, esta es la feria', this.idFeriaSeleccionada);
   
   }
 

@@ -16,12 +16,12 @@
   </ion-header>
 
   <ion-searchbar animated
-                 placeholder="Buscar ferias"
+                 placeholder="Buscar feria"
                  (ionChange)="buscar( $event )"></ion-searchbar>
 
 <ion-content>
 
-  <app-ferias-check [textoBuscar]="textoBuscar" (feriasSeleccionadas)="escuchaDelHijo($event)" ></app-ferias-check >
+  <app-ferias-check [textoBuscar]="textoBuscar" (feriaSeleccionada)="escuchaDelHijo($event)" ></app-ferias-check >
 
 </ion-content>
 
@@ -31,5 +31,5 @@
 
     <ion-button expand="full"
                 (click)="clickSiguiente()"> Siguiente </ion-button>
-     
+
 </footer>

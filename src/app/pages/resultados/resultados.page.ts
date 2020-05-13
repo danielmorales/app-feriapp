@@ -14,8 +14,8 @@ export class ResultadosPage implements OnInit {
   
   // Se le asignan todas las ferias, se utiliza de variable de entrada en la función filtrarFerias()
   ferias: Feria [] = [];
-  // IDs de las ferias seleccionadas, se utiliza de variable de entrada en la función filtrarFerias()
-  idsFerias: number [] = [];
+  // ID de la feria seleccionads, se utiliza de variable de entrada en la función filtrarFerias()
+  idFeria: number;
   // IDs de los productos seleccionados
   idsProductos: number [] = [];
 
@@ -40,7 +40,7 @@ export class ResultadosPage implements OnInit {
               private navCtrl: NavController){
     
     // Se le asignan los IDs de las ferias seleccionadas por el usuario
-    this.idsFerias = this.listaService.idsFerias;
+    this.idFeria = this.listaService.idFeriaSeleccionada;
     this.idsProductos = this.listaService.idsProductos;
   }
 
@@ -89,7 +89,7 @@ export class ResultadosPage implements OnInit {
         this.ferias.push(...resp.ferias);
 
         // Se filtran las ferias y se meten al array feriasSeleccionadas
-        this.feriasSeleccionadas.push( ...this.filtrarFerias(this.idsFerias, this.ferias));
+        this.feriasSeleccionadas.push( ...this.filtrarFerias(this.idFeria, this.ferias));
         // Esto hace "lo mismo" que arriba, pero no funciona porque al componente hijo el array llega vacio
         //this.feriasSeleccionadas = this.filtrarFerias(this.idsFerias, this.ferias);
         // console.log('Ferias seleccionadas enviadas al componente hijo', this.feriasSeleccionadas);
@@ -99,16 +99,17 @@ export class ResultadosPage implements OnInit {
 
   // La entrada son todas las ferias y los IDs de las ferias seleccionadas, retorna las ferias seleccionadas
   // Esta función es invocada por obtenerFerias()
-  filtrarFerias( idsFerias: number [], ferias: Feria []){
+  filtrarFerias( idFeria: number, ferias: Feria []){
     
     var feriasSeleccionadas: Feria [] = [];
-    for (let i = 0; i < idsFerias.length; i++) {
-      for (let j = 0; j < ferias.length; j++) {
-        if(idsFerias[i]==ferias[j].id_feria){
+
+    for (let j = 0; j < ferias.length; j++) {
+
+        if(idFeria==ferias[j].id_feria){
           feriasSeleccionadas.push(ferias[j]);
         }
-      }
     }
+    
     // console.log('Dentro de la funcion filtrarFerias: ', feriasSeleccionadas);
     return feriasSeleccionadas;
   }
@@ -143,8 +144,13 @@ export class ResultadosPage implements OnInit {
   }
 
   clickSiguiente(){
+    if (this.listaFinal.length == 0) {
+      console.log('Lista vacia, selecciona tus puestos');
+      return;
+    }
     this.listaService.guardarListaFinal(this.listaFinal);
     this.navCtrl.navigateRoot('/recorrido', {animated: true});
+
   }
 
 

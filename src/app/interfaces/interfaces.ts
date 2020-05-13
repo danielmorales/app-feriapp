@@ -47,10 +47,15 @@ export interface Puesto {
   nombre_puesto?: string;
   descripcion_puesto?: string;
   fk_id_feria?: number;
+  geo_puesto?: string;
+  oferta?: Oferta [];
   productos?: Producto[];
 }
 export interface Productos {
   productos: Producto[];
+}
+export interface OneProducto {
+  producto: Producto;
 }
 
 export interface Producto {
@@ -62,6 +67,26 @@ export interface Producto {
 }
 
 export interface Puestoproducto {
+  precio: number;
+  kgunidad: number;
+  created_at: string;
+  updated_at: string;
+  fk_id_producto: number;
+  fk_id_puesto: number;
+}
+
+export interface Oferta {
+  id_producto: number;
+  nombre_producto: string;
+  descripcion_producto: string;
+  created_at: string;
+  updated_at: string;
+  img_producto?: any;
+  ofertaproducto: Ofertaproducto;
+}
+
+export interface Ofertaproducto {
+  cantidad: number;
   precio: number;
   created_at: string;
   updated_at: string;
@@ -82,6 +107,17 @@ export interface IonRadio {
   value: number;
 }
 
+export interface CheckIonRadio {
+  checked: boolean;
+  value: number;
+}
+
+// Para hacer el recorrido en la feria
+export interface PuestoRecorrido {
+  nombre_producto: string,
+  precio_producto: number,
+}
+
 
 // Los productos de un puesto en particular
 export interface ProductosPuestoLista {
@@ -92,8 +128,38 @@ export interface ProductosPuesto {
   fk_id_producto: number;
   precio: number;
   updated_at: string;
+
 }
 
+export interface Supermercados{
+  supermercados: Supermercado[]
+}
+
+export interface Supermercado{
+  id_supermercado: number;
+  nombre_supermercado: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface ListaProductosSupermercado {
+  productossupermercado: ProductosSupermercado[];
+}
+
+export interface ProductosSupermercado {
+  fk_id_producto: number;
+  precio: number;
+  kgunidad: number;
+  created_at: string;
+}
+
+export interface Comparacion {
+  nombre_producto: string;
+  precio_feria: number;
+  precio_super: number
+
+
+}
 
   /*
 export interface ComentarioPuesto {

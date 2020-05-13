@@ -8,9 +8,18 @@
 
 <ion-item *ngIf=" precioVista > precioMasBajo ">
     
-    <ion-label>
+    <ion-label *ngIf="kgunidad == 0">
         ${{precioVista}} x kg.
     </ion-label>
+
+    <ion-label *ngIf="kgunidad == 1">
+        ${{precioVista}} x unidad
+    </ion-label>
+
+    <ion-label *ngIf="kgunidad == null">
+            ${{precioVista}} x sin info
+    </ion-label>
+    
 
 </ion-item>
 

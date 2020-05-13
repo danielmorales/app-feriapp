@@ -1,10 +1,14 @@
 <ion-list>
 
-  <ion-list-header> Seleccione las ferias que desea consultar </ion-list-header>
+  <ion-list-header> Seleccione la feria que desea visitar </ion-list-header>
 
-  <app-feria-check *ngFor="let feria of ferias | filtro: textoBuscar: 'nombre_feria'"
-                   [feria] = "feria"
-                   (ionChange) = "onClick( $event, feria)"
-                   [listaCheck] = "lista"></app-feria-check>
+  <ion-radio-group>
 
+    <app-feria-check *ngFor="let feria of ferias | filtro: textoBuscar: 'nombre_feria'"
+                      [feria] = "feria"
+                      (ionSelect)="radioSelect($event)"
+                      [check]="(checkpadre)"></app-feria-check>
+
+  </ion-radio-group>
+  
 </ion-list>                     

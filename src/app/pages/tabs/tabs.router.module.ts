@@ -29,7 +29,7 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () =>
-              import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+              import('../mapa-ferias/mapa-ferias.module').then(m => m.MapaFeriasPageModule)
           }
         ]
       },

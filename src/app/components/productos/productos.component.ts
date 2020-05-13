@@ -37,10 +37,9 @@ export class ProductosComponent implements OnInit {
         // console.log('Esta es la respuesta completa', resp);
         // console.log('Id del primer producto de la lista', this.productos[0].id_producto);
         // console.log('Este es el largo, estoy en el ngOnInit del componente', this.productos.length);
-        this.largo = this.productos.length;
 
         // Creo una lista para guardar los valores del checkbox
-        this.listaVacia(this.largo);
+        this.listaVacia(this.productos.length);
       });
 
   }

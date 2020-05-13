@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { Productos } from '../interfaces/interfaces';
+import { Productos,  OneProducto } from '../interfaces/interfaces';
 
 const Url = environment.url;
 
@@ -15,6 +15,10 @@ export class ProductosService {
   // Obtener todos los productos
   getProductos(){
     return this.http.get<Productos>(`${Url}/api/producto`);
+  }
+  // Obtener un producto
+  getOneProductos(id_producto: number){
+    return this.http.get<OneProducto>(`${Url}/api/producto/${id_producto}`);
   }
 
 

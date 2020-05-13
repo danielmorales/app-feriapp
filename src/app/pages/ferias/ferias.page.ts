@@ -12,7 +12,7 @@ export class FeriasPage implements OnInit {
   // Esto debe ir en otro componente especial para el searchbar
   textoBuscar = '';
 
-  feriasSeleccionadas;
+  feriaSeleccionada;
 
   constructor( private route: Router,
                private listaCompras: ListaComprasService) { }
@@ -27,23 +27,22 @@ export class FeriasPage implements OnInit {
     // console.log('lo que busco', this.textoBuscar);
   }
 
-  escuchaDelHijo(listaSeleccionados){
+  escuchaDelHijo(feriaelegida){
 
-    // console.log('esto viene del componente app-ferias-check: ', listaSeleccionados);
+    console.log('esto viene del componente app-ferias-check: ', feriaelegida);
     // Se asigna listaSeleccionados a una variable local
-    this.feriasSeleccionadas = listaSeleccionados;
+    this.feriaSeleccionada = feriaelegida;
 
   }
 
   clickSiguiente(){
 
-    // Se extraen los IDS que están en true, en la lista del tipo Checkbox
-    var lista = this.listaCompras.extraerIds(this.feriasSeleccionadas);
+    // FALTA VALIDAR SI NO SE HA ELEGIDO NINGUNA FERIA
 
-    // Busco esos IDS en todas las ferias
+    // if feriaseleccionada == null, entonces mostrar mensaje y salir de esta funcion
 
     // Llamo al servicio que guardará localmente la lista para luego utilizarla en otra página
-    this.listaCompras.guardarListaFeriasSeleccionadas(lista);
+    this.listaCompras.guardaFeriaSeleccionada(this.feriaSeleccionada);
     
     this.route.navigateByUrl('/resultados');
   }
